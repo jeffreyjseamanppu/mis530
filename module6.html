@@ -1,0 +1,880 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lab: Data Visualization with Kaggle and Tableau</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    line-height: 1.7;
+    color: #263238;
+    max-width: 1050px;
+    margin: 30px auto;
+    padding: 25px;
+    background: #f8fafc;
+  }
+  h1, h2, h3 { color: #163c64; }
+  h1 { border-bottom: 4px solid #2374ab; padding-bottom: 15px; }
+  h2 {
+    margin-top: 35px;
+    border-bottom: 2px solid #d7e4ef;
+    padding-bottom: 8px;
+  }
+  .box {
+    background: #eaf4ff;
+    padding: 18px;
+    border-left: 5px solid #2374ab;
+    border-radius: 5px;
+    margin: 20px 0;
+  }
+  .step {
+    background: white;
+    border: 1px solid #dce4eb;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+  }
+  .tip {
+    background: #fff8df;
+    padding: 15px;
+    border-left: 5px solid #e0a800;
+    margin: 15px 0;
+  }
+  .success {
+    background: #e8f5e9;
+    padding: 15px;
+    border-left: 5px solid #388e3c;
+    margin: 15px 0;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background: white;
+  }
+  th, td {
+    border: 1px solid #ccd6df;
+    padding: 12px;
+    text-align: left;
+  }
+  th { background: #163c64; color: white; }
+  a { color: #1264a3; }
+  code {
+    background: #edf1f5;
+    padding: 3px 6px;
+    border-radius: 3px;
+  }
+  li { margin-bottom: 8px; }
+</style>
+</head>
+
+<body>
+
+<h1>Lab: Data Visualization Using Kaggle and Tableau</h1>
+
+<div class="box">
+  <strong>Lab Topic:</strong> Data Analytics and Visualization<br>
+  <strong>Difficulty:</strong> Beginner<br>
+  <strong>Estimated Time:</strong> 2–3 Hours<br>
+  <strong>Total Points:</strong> 100<br>
+  <strong>Required Software:</strong> Tableau Public<br>
+  <strong>Data Source:</strong> Kaggle
+</div>
+
+<h2>1. Lab Overview</h2>
+
+<p>
+Data visualization is an essential component of data analytics.
+Organizations collect large amounts of information, but raw data
+can be difficult to interpret without appropriate tools.
+</p>
+
+<p>
+Tableau is a business intelligence and data visualization platform
+that enables users to transform datasets into charts, graphs,
+maps, and interactive dashboards.
+</p>
+
+<p>
+Kaggle is an online data science community that provides access
+to thousands of datasets covering business, healthcare,
+technology, sports, finance, and many other subjects.
+</p>
+
+<p>
+In this lab, students will obtain a dataset from Kaggle,
+import it into Tableau, examine its structure, and develop
+visualizations that communicate meaningful findings.
+</p>
+
+<h2>2. Learning Objectives</h2>
+
+<p>Upon completing this lab, students will be able to:</p>
+
+<ol>
+  <li>Explain the purpose of data visualization.</li>
+  <li>Locate and download datasets from Kaggle.</li>
+  <li>Identify CSV files and understand their structure.</li>
+  <li>Import external data into Tableau.</li>
+  <li>Distinguish between dimensions and measures.</li>
+  <li>Identify and correct common data quality issues.</li>
+  <li>Create bar charts, line charts, and scatter plots.</li>
+  <li>Develop an interactive Tableau dashboard.</li>
+  <li>Interpret visualized data and communicate findings.</li>
+</ol>
+
+<h2>3. Background Information</h2>
+
+<h3>What Is Kaggle?</h3>
+
+<p>
+Kaggle is an online platform that hosts publicly available
+datasets and provides tools for data analysis and machine learning.
+Researchers, organizations, and individuals contribute datasets
+that can be used for educational and analytical purposes.
+</p>
+
+<p>
+Website:
+<a href="https://www.kaggle.com/datasets" target="_blank">
+https://www.kaggle.com/datasets
+</a>
+</p>
+
+<h3>What Is Tableau?</h3>
+
+<p>
+Tableau is a visual analytics application that allows users to
+explore datasets without writing extensive programming code.
+Its drag-and-drop interface supports charts, dashboards,
+filters, and interactive exploration.
+</p>
+
+<p>
+Tableau Public is a free platform for creating and sharing
+visualizations publicly.
+</p>
+
+<p>
+Website:
+<a href="https://public.tableau.com/" target="_blank">
+https://public.tableau.com/
+</a>
+</p>
+
+<div class="tip">
+<strong>Important:</strong>
+Tableau Public publishes shared workbooks publicly.
+Do not upload confidential, private, or personally identifiable
+information. Use an appropriately licensed public dataset.
+</div>
+
+<h3>Important Terminology</h3>
+
+<table>
+<tr><th>Term</th><th>Definition</th></tr>
+<tr>
+<td>Dataset</td>
+<td>A structured collection of information.</td>
+</tr>
+<tr>
+<td>CSV</td>
+<td>Comma-Separated Values, a common text-based data format.</td>
+</tr>
+<tr>
+<td>Dimension</td>
+<td>A field used to categorize data, such as product or region.</td>
+</tr>
+<tr>
+<td>Measure</td>
+<td>A numeric field used for calculations, such as sales or profit.</td>
+</tr>
+<tr>
+<td>Worksheet</td>
+<td>A Tableau workspace containing an individual visualization.</td>
+</tr>
+<tr>
+<td>Dashboard</td>
+<td>A collection of related visualizations presented together.</td>
+</tr>
+<tr>
+<td>Filter</td>
+<td>A control that limits the data displayed.</td>
+</tr>
+<tr>
+<td>Aggregation</td>
+<td>A calculation combining multiple records, such as SUM or AVG.</td>
+</tr>
+</table>
+
+<h2>4. Part One: Install Tableau Public</h2>
+
+<div class="step">
+<h3>Step 1: Open Tableau Public</h3>
+<ol>
+<li>Open a web browser.</li>
+<li>Navigate to
+<a href="https://public.tableau.com/" target="_blank">
+Tableau Public</a>.
+</li>
+<li>Create a free Tableau Public account if necessary.</li>
+<li>Locate the option to download Tableau Public Desktop.</li>
+<li>Download the installer for Windows or macOS.</li>
+</ol>
+</div>
+
+<div class="step">
+<h3>Step 2: Install the Application</h3>
+<ol>
+<li>Locate the downloaded installation file.</li>
+<li>Run the installer.</li>
+<li>Follow the installation prompts.</li>
+<li>Launch Tableau Public.</li>
+<li>Sign in when prompted.</li>
+</ol>
+</div>
+
+<div class="success">
+<strong>Checkpoint:</strong>
+You should now see the Tableau Public start screen,
+including options for connecting to data.
+</div>
+
+<h2>5. Part Two: Download a Dataset from Kaggle</h2>
+
+<div class="step">
+<h3>Step 3: Create a Kaggle Account</h3>
+
+<ol>
+<li>Visit <a href="https://www.kaggle.com/" target="_blank">
+Kaggle.com</a>.</li>
+<li>Select Register or Sign In.</li>
+<li>Create an account using an available registration method.</li>
+<li>Navigate to the Datasets section.</li>
+</ol>
+</div>
+
+<div class="step">
+<h3>Step 4: Find a Dataset</h3>
+
+<p>
+For this exercise, we will use a retail sales dataset.
+</p>
+
+<ol>
+<li>Navigate to Kaggle Datasets.</li>
+<li>Search for <strong>Sample Superstore Sales</strong>.</li>
+<li>Select a dataset containing retail sales transactions.</li>
+<li>Review its description, columns, file format, and license.</li>
+<li>Choose a dataset that includes the following fields:</li>
+</ol>
+
+<ul>
+<li>Order Date</li>
+<li>Region</li>
+<li>Category</li>
+<li>Sales</li>
+<li>Profit</li>
+</ul>
+
+<p>
+A dataset containing Sub-Category and Discount is especially useful.
+</p>
+
+<p>
+<a href="https://www.kaggle.com/datasets?search=sample+superstore"
+target="_blank">Search Kaggle for Superstore datasets</a>
+</p>
+
+<div class="tip">
+<strong>Dataset note:</strong>
+Kaggle datasets are contributed by different authors.
+Column names and available files may differ.
+For consistent results, choose a Superstore dataset containing
+the fields listed above. If necessary, use the closest
+equivalent column names.
+</div>
+</div>
+
+<div class="step">
+<h3>Step 5: Download and Extract the Data</h3>
+
+<ol>
+<li>Click the Download option on the selected dataset.</li>
+<li>Save the ZIP or CSV file to your computer.</li>
+<li>If downloaded as a ZIP, extract its contents.</li>
+<li>Locate the CSV file.</li>
+<li>Open the CSV using Excel or a text editor.</li>
+<li>Review the column headings and several records.</li>
+</ol>
+
+<p>
+Example dataset structure:
+</p>
+
+<table>
+<tr>
+<th>Order Date</th>
+<th>Region</th>
+<th>Category</th>
+<th>Sales</th>
+<th>Profit</th>
+</tr>
+<tr>
+<td>2023-01-05</td>
+<td>East</td>
+<td>Furniture</td>
+<td>250</td>
+<td>35</td>
+</tr>
+<tr>
+<td>2023-01-06</td>
+<td>West</td>
+<td>Technology</td>
+<td>780</td>
+<td>125</td>
+</tr>
+<tr>
+<td>2023-01-07</td>
+<td>Central</td>
+<td>Office Supplies</td>
+<td>95</td>
+<td>18</td>
+</tr>
+</table>
+
+<p><em>These records are illustrative, not actual Kaggle results.</em></p>
+</div>
+
+<h2>6. Part Three: Import Data into Tableau</h2>
+
+<div class="step">
+<h3>Step 6: Connect to the CSV File</h3>
+
+<ol>
+<li>Open Tableau Public Desktop.</li>
+<li>Locate the Connect section.</li>
+<li>Select <strong>Text File</strong>.</li>
+<li>Browse to the downloaded CSV file.</li>
+<li>Select the file and click Open.</li>
+<li>Wait for Tableau to load the dataset.</li>
+</ol>
+
+<p>
+Tableau should display a preview of the dataset
+on the Data Source page.
+</p>
+</div>
+
+<div class="step">
+<h3>Step 7: Examine the Dataset</h3>
+
+<p>Review the following information:</p>
+
+<ul>
+<li>Number of columns</li>
+<li>Available field names</li>
+<li>Data types</li>
+<li>Missing values</li>
+<li>Numerical versus categorical information</li>
+</ul>
+
+<p>
+Common Tableau data types include:
+</p>
+
+<ul>
+<li>Abc – Text/String</li>
+<li># – Numeric values</li>
+<li>Calendar icon – Date values</li>
+<li>Globe icon – Geographic values</li>
+</ul>
+
+<p>
+Verify that Sales and Profit are numeric fields
+and Order Date is a date field.
+</p>
+</div>
+
+<h2>7. Part Four: Data Cleaning</h2>
+
+<div class="step">
+<h3>Step 8: Check Data Types</h3>
+
+<ol>
+<li>Locate the Sales field.</li>
+<li>Confirm it has a numeric data type.</li>
+<li>If necessary, select the field's data type icon.</li>
+<li>Change it to Number (Decimal).</li>
+<li>Repeat for Profit.</li>
+<li>Locate Order Date.</li>
+<li>Ensure it is assigned the Date data type.</li>
+</ol>
+</div>
+
+<div class="step">
+<h3>Step 9: Identify Missing Values</h3>
+
+<ol>
+<li>Open a new worksheet.</li>
+<li>Drag Region to Rows.</li>
+<li>Drag Number of Records to Text, if available.</li>
+<li>Alternatively, use COUNT of a populated identifier.</li>
+<li>Look for Null or blank Region values.</li>
+<li>Inspect other important fields for missing values.</li>
+</ol>
+
+<p>
+Document any data quality issues discovered.
+</p>
+
+<div class="tip">
+<strong>Important:</strong>
+Do not automatically replace missing sales or profit values
+with zero. A missing value is not necessarily a zero.
+Explain any cleaning decisions in your lab report.
+</div>
+</div>
+
+<h2>8. Part Five: Create Visualization #1</h2>
+
+<h3>Bar Chart: Total Sales by Region</h3>
+
+<div class="step">
+<h3>Step 10: Create a New Worksheet</h3>
+
+<ol>
+<li>Click Sheet 1 or create a new worksheet.</li>
+<li>Rename the worksheet <strong>Sales by Region</strong>.</li>
+<li>Locate Region in the Data pane.</li>
+<li>Drag Region to the Rows shelf.</li>
+<li>Locate Sales.</li>
+<li>Drag Sales to the Columns shelf.</li>
+<li>Confirm the aggregation is SUM(Sales).</li>
+<li>In the Marks card, select Bar if necessary.</li>
+</ol>
+</div>
+
+<div class="step">
+<h3>Step 11: Format the Bar Chart</h3>
+
+<ol>
+<li>Click the Sort Descending button to rank regions.</li>
+<li>Drag SUM(Sales) to Label on the Marks card.</li>
+<li>Enable Show Mark Labels if necessary.</li>
+<li>Format Sales as currency.</li>
+<li>Change the title to <strong>Total Sales by Region</strong>.</li>
+<li>Optionally drag Region to Color.</li>
+</ol>
+
+<p>
+Your completed visualization should display
+regional sales totals as horizontal bars.
+</p>
+
+<h3>Questions</h3>
+<ol>
+<li>Which region has the highest sales?</li>
+<li>Which region has the lowest sales?</li>
+<li>What is the difference between these regions?</li>
+<li>What business decisions could this information support?</li>
+</ol>
+</div>
+
+<h2>9. Part Six: Create Visualization #2</h2>
+
+<h3>Line Chart: Sales Over Time</h3>
+
+<div class="step">
+<h3>Step 12: Build a Time-Series Visualization</h3>
+
+<ol>
+<li>Create a new worksheet.</li>
+<li>Rename it <strong>Monthly Sales Trend</strong>.</li>
+<li>Drag Order Date to Columns.</li>
+<li>Use the date pill menu to select Month as a
+continuous date value, preserving year information.</li>
+<li>Drag Sales to Rows.</li>
+<li>Confirm the measure is SUM(Sales).</li>
+<li>Change the Marks type to Line.</li>
+<li>Set the worksheet title to
+<strong>Monthly Sales Trend</strong>.</li>
+</ol>
+
+<p>
+This visualization will illustrate how sales change
+over time.
+</p>
+</div>
+
+<div class="step">
+<h3>Step 13: Analyze the Sales Trend</h3>
+
+<ol>
+<li>Identify periods of increasing sales.</li>
+<li>Identify periods of decreasing sales.</li>
+<li>Look for unusually high or low values.</li>
+<li>Determine whether seasonal patterns are visible.</li>
+<li>Record at least two observations.</li>
+</ol>
+
+<div class="tip">
+<strong>Tip:</strong>
+A discrete Month date part can combine the same
+month across multiple years. Use a continuous
+month-level date to show a chronological timeline.
+</div>
+</div>
+
+<h2>10. Part Seven: Create Visualization #3</h2>
+
+<h3>Scatter Plot: Sales Versus Profit</h3>
+
+<div class="step">
+<h3>Step 14: Create a Scatter Plot</h3>
+
+<ol>
+<li>Create a new worksheet.</li>
+<li>Rename it <strong>Sales vs Profit</strong>.</li>
+<li>Drag Sales to Columns.</li>
+<li>Drag Profit to Rows.</li>
+<li>Confirm SUM(Sales) and SUM(Profit) are used.</li>
+<li>Change the Marks type to Circle.</li>
+<li>Drag Sub-Category to Detail on the Marks card.</li>
+<li>If Sub-Category is unavailable, use another
+appropriate categorical field.</li>
+<li>Drag Category to Color if available.</li>
+<li>Set the title to <strong>Sales vs Profit</strong>.</li>
+</ol>
+
+<p>
+Adding a categorical field to Detail creates separate
+marks rather than displaying only one aggregated point.
+</p>
+</div>
+
+<div class="step">
+<h3>Step 15: Interpret the Scatter Plot</h3>
+
+<p>Answer the following questions:</p>
+
+<ol>
+<li>Do higher sales always correspond to higher profits?</li>
+<li>Which categories have negative profits?</li>
+<li>Are there any outliers?</li>
+<li>What might explain low-profit, high-sales products?</li>
+</ol>
+
+<p>
+Consider how discounts, expenses, or pricing
+might influence profitability.
+</p>
+</div>
+
+<h2>11. Part Eight: Create an Interactive Dashboard</h2>
+
+<div class="step">
+<h3>Step 16: Create the Dashboard</h3>
+
+<ol>
+<li>Click the New Dashboard icon.</li>
+<li>Rename the dashboard
+<strong>Superstore Sales Dashboard</strong>.</li>
+<li>Choose a suitable dashboard size.</li>
+<li>Drag Sales by Region onto the dashboard.</li>
+<li>Drag Monthly Sales Trend onto the dashboard.</li>
+<li>Drag Sales vs Profit onto the dashboard.</li>
+<li>Arrange the charts so they are easy to read.</li>
+<li>Ensure titles and labels are visible.</li>
+</ol>
+</div>
+
+<div class="step">
+<h3>Step 17: Add Interactive Filtering</h3>
+
+<ol>
+<li>Return to the Sales by Region worksheet.</li>
+<li>Drag Region to the Filters shelf.</li>
+<li>Select all regions and confirm.</li>
+<li>Right-click the Region filter and select Show Filter.</li>
+<li>Return to the dashboard.</li>
+<li>Locate the Region filter control.</li>
+<li>Use the filter menu and choose Apply to Worksheets,
+then All Using This Data Source.</li>
+<li>Test the filter by selecting different regions.</li>
+</ol>
+
+<p>
+All three visualizations should update when
+a different region is selected, provided they
+use the same compatible data source.
+</p>
+</div>
+
+<div class="step">
+<h3>Step 18: Improve Dashboard Appearance</h3>
+
+<ol>
+<li>Add a descriptive dashboard title.</li>
+<li>Use consistent colors.</li>
+<li>Ensure labels are readable.</li>
+<li>Remove unnecessary visual clutter.</li>
+<li>Adjust chart sizes.</li>
+<li>Test all filters and tooltips.</li>
+</ol>
+</div>
+
+<h2>12. Part Nine: Save and Publish</h2>
+
+<div class="step">
+<h3>Step 19: Save Your Workbook</h3>
+
+<ol>
+<li>Open the File menu.</li>
+<li>Select the available save or publish option.</li>
+<li>Sign in to Tableau Public if prompted.</li>
+<li>Use a descriptive workbook title.</li>
+<li>Publish your visualization to Tableau Public.</li>
+<li>Open the published dashboard in your browser.</li>
+<li>Copy its public URL.</li>
+</ol>
+
+<div class="tip">
+<strong>Privacy reminder:</strong>
+Tableau Public is intended for publicly shareable data.
+Review the dataset and workbook before publishing.
+</div>
+</div>
+
+<h2>13. Part Ten: Written Analysis</h2>
+
+<p>
+Prepare a short written analysis of approximately
+300–500 words addressing the following questions.
+</p>
+
+<ol>
+<li>What dataset did you select, and why?</li>
+<li>How many rows and columns are in the dataset?</li>
+<li>What data quality issues did you identify?</li>
+<li>Which region generated the highest sales?</li>
+<li>What patterns were observed in monthly sales?</li>
+<li>What relationship exists between sales and profit?</li>
+<li>What business recommendations can you make?</li>
+<li>How does visualization improve decision-making?</li>
+</ol>
+
+<p>
+Support your conclusions with specific values
+or observations from your visualizations.
+</p>
+
+<h2>14. Lab Deliverables</h2>
+
+<p>Students must submit:</p>
+
+<ol>
+<li>
+<strong>Dataset Information:</strong>
+Dataset title, Kaggle URL, and a brief description.
+</li>
+<li>
+<strong>Bar Chart Screenshot:</strong>
+Total Sales by Region.
+</li>
+<li>
+<strong>Line Chart Screenshot:</strong>
+Monthly Sales Trend.
+</li>
+<li>
+<strong>Scatter Plot Screenshot:</strong>
+Sales vs Profit.
+</li>
+<li>
+<strong>Dashboard Screenshot:</strong>
+All three visualizations and the interactive filter.
+</li>
+<li>
+<strong>Tableau Public URL:</strong>
+Link to the published dashboard.
+</li>
+<li>
+<strong>Written Analysis:</strong>
+300–500 words explaining findings and recommendations.
+</li>
+</ol>
+
+<h2>15. Grading Rubric – 100 Points</h2>
+
+<table>
+<tr>
+<th>Component</th>
+<th>Points</th>
+</tr>
+<tr>
+<td>Dataset selection and documentation</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Correct data import and data type validation</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Data quality review and documentation</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Bar chart – Sales by Region</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Line chart – Monthly Sales Trend</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Scatter plot – Sales vs Profit</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Interactive dashboard and functional filter</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Written analysis and business recommendations</td>
+<td>10</td>
+</tr>
+<tr>
+<th>Total</th>
+<th>100</th>
+</tr>
+</table>
+
+<h2>16. Troubleshooting Guide</h2>
+
+<table>
+<tr>
+<th>Problem</th>
+<th>Possible Solution</th>
+</tr>
+<tr>
+<td>CSV file will not open</td>
+<td>Confirm the ZIP file was extracted and select the CSV file.</td>
+</tr>
+<tr>
+<td>Sales appears as text</td>
+<td>Change the data type to Number (Decimal).</td>
+</tr>
+<tr>
+<td>Dates are not recognized</td>
+<td>Verify the date format and select the correct date data type.</td>
+</tr>
+<tr>
+<td>Only one point appears in the scatter plot</td>
+<td>Add a categorical dimension to Detail.</td>
+</tr>
+<tr>
+<td>Charts display unexpected totals</td>
+<td>Review the aggregation and check for duplicated records.</td>
+</tr>
+<tr>
+<td>Dashboard filter does not update all charts</td>
+<td>Verify the filter applies to all relevant worksheets.</td>
+</tr>
+<tr>
+<td>Tableau Public will not publish</td>
+<td>Check your internet connection and Tableau Public sign-in.</td>
+</tr>
+</table>
+
+<h2>17. Discussion Questions</h2>
+
+<p>
+After completing the lab, reflect on the following:
+</p>
+
+<ol>
+<li>
+Why are visualizations often more effective than
+large tables of raw information?
+</li>
+<li>
+What are the advantages and disadvantages of
+using publicly available datasets?
+</li>
+<li>
+How might a business use a Tableau dashboard
+to improve operational decision-making?
+</li>
+<li>
+What risks arise when analysts visualize
+inaccurate or incomplete data?
+</li>
+<li>
+How could artificial intelligence enhance
+the data analysis process?
+</li>
+</ol>
+
+<h2>18. Optional Challenge: Advanced Analytics</h2>
+
+<p>
+Students seeking additional experience may complete
+one or more of the following activities.
+</p>
+
+<ul>
+<li>Create a calculated field for Profit Margin.</li>
+<li>Add a geographic map showing sales by state.</li>
+<li>Create a Top 10 Products visualization.</li>
+<li>Add Category and Sub-Category filters.</li>
+<li>Use a trend line to examine relationships.</li>
+</ul>
+
+<h3>Example Calculated Field: Profit Margin</h3>
+
+<p>
+In Tableau, select Analysis &gt; Create Calculated Field
+and enter the following formula:
+</p>
+
+<pre><code>
+IF SUM([Sales]) != 0 THEN
+    SUM([Profit]) / SUM([Sales])
+END
+</code></pre>
+
+<p>
+Name the field <strong>Profit Margin</strong>
+and format it as a percentage.
+</p>
+
+<h2>19. Conclusion</h2>
+
+<p>
+This lab introduced students to a practical data analytics
+workflow using Kaggle and Tableau.
+</p>
+
+<p>
+Students learned how to locate a public dataset,
+download and import data, validate field types,
+create multiple visualizations, and combine those
+visualizations into an interactive dashboard.
+</p>
+
+<p>
+These skills are relevant to business intelligence,
+data analytics, cybersecurity reporting,
+financial analysis, and software development.
+</p>
+
+<p>
+The ability to transform raw data into meaningful
+visual information is a valuable skill across
+many technical and business professions.
+</p>
+
+</body>
+</html>
